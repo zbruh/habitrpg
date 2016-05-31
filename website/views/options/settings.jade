@@ -273,9 +273,12 @@ script(type='text/ng-template', id='partials/options.settings.api.html')
                   span.glyphicon.glyphicon-trash(tooltip=env.t('delete'))
             tr
               td(colspan=2)
-                form.form-horizontal(ng-submit='addWebhook(_newWebhook.url)')
-                  .form-group.col-sm-10
+                form.form-horizontal(ng-submit='addWebhook(_newWebhook.url, _newWebhook.enabled)')
+                  .form-group.col-sm-8
                     input.form-control(type='url', ng-model='_newWebhook.url', placeholder=env.t('webhookURL'))
+                  .col-sm-2.checkbox
+                    label=env.t('enabled')
+                      input(type='checkbox', ng-model='_newWebhook.enabled')
                   .col-sm-2
                     button.btn.btn-sm.btn-primary(type='submit')=env.t('add')
 

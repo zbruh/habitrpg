@@ -7,6 +7,7 @@ import {
 import _ from 'lodash';
 
 module.exports = function addWebhook (user, req = {}) {
+  console.log(req);
   let wh = user.preferences.webhooks;
 
   if (!validator.isURL(_.get(req, 'body.url'))) throw new BadRequest(i18n.t('invalidUrl', req.language));
@@ -14,7 +15,8 @@ module.exports = function addWebhook (user, req = {}) {
 
   user.markModified('preferences.webhooks');
 
-  if (req.v2 === true) {
+  if (/*req.v2 ===*/ true) {
+    console.log('returning webhooks');
     return user.preferences.webhooks;
   } else {
     return [
